@@ -1,0 +1,38 @@
+/* Global Typography */
+body {
+  background-color: #FFFFF0;
+  font-family: Helvetica, sans-serif;
+  color: black;
+  font-size: 1.5em;
+}
+
+/* Flexbox */
+html,
+body {
+  min-height: 100vh;
+  margin: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 4em;
+  background-color: #F5F5DC;
+  text-align: center;
+}
+
+main {
+  flex: auto;
+  max-width: 80%;
+  margin: auto;
+}
+
+footer {
+  height: 4em;
+  background-color: #F5F5DC;
+  text-align: right;
+  padding-right: 1em;
+}
