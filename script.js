@@ -2,6 +2,7 @@ $(document).ready(onReady);
 
 function onReady() {
     $('.submit-button').on('click', getTheInput);
+    $('#table-body').on('click', '#table-row', deleteButton)
 }
 //end onReady()
 
@@ -34,7 +35,7 @@ function getTheInput(event){
 
         let annualSalaryFormatted=parseInt(annualSalaryInput).toLocaleString("en-US")
 
-        $('#table-body').append(`<tr id="tableRow"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td >$${annualSalaryFormatted}</td></tr>`)
+        $('#table-body').append(`<tr id="table-row"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td >$${annualSalaryFormatted}</td><td><button id="delete-button">Delete</button></td></tr>`)
         
 
         totalMonthly+=parseInt(annualSalaryInput);
@@ -53,3 +54,8 @@ function getTheInput(event){
     }
     }
 //end getTheInput()
+
+function deleteButton() {
+   $('#table-row').remove();
+  }
+//end deleteButton()
