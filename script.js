@@ -35,11 +35,12 @@ function getTheInput(event){
 
         let annualSalaryFormatted=parseInt(annualSalaryInput).toLocaleString("en-US")
 
-        $('#table-body').append(`<tr id="table-row"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td >$${annualSalaryFormatted}</td><td><button id="delete-button">Delete</button></td></tr>`)
+        $('#table-body').append(`<tr id="table-row"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td id="annual-salary-data">$${annualSalaryFormatted}</td><td><button id="delete-button">Delete</button></td></tr>`)
         
 
         totalMonthly+=parseInt(annualSalaryInput);
-        console.log("totalMonthly:", totalMonthly)
+        console.log("totalMonthly:", totalMonthly);
+        console.log("totalMonthly type:", typeof(totalMonthly));
         let formattedNumber = totalMonthly.toLocaleString("en-US")
         $('h4').text("Total Monthly: $" + formattedNumber)
         if (totalMonthly > 20000) {
@@ -48,14 +49,26 @@ function getTheInput(event){
         }
     } else if (!isNaN(idInput) && !isNaN(annualSalaryInput)){
         alert("Please fill out ID and annual salary with only numbers.")
-    }
+    } 
     else {
         alert("Please fill out all input fields.")
     }
-    }
+}
 //end getTheInput()
 
 function deleteButton() {
    $('#table-row').remove();
-  }
+   console.log("Annual Salary", $(this).find('#annual-salary-data').text())
+   console.log("Annual Salary type:", typeof($(this).find('#annual-salary-data')));
+   console.log("totalMonthly before:", totalMonthly);
+   let annualSalaryUnformatted = $(this).find('#annual-salary-data').text().replace(/[$,]/g, "");
+   console.log("annualSalaryUnformatted", annualSalaryUnformatted)
+   let annualSalaryFormatted = JSON.parse(annualSalaryUnformatted)
+   totalMonthly-=parseInt(annualSalaryFormatted)
+   console.log("totalMonthly after:", totalMonthly);
+   console.log("totalMonthly type:", typeof(totalMonthly));
+   let formattedNumber = totalMonthly.toLocaleString("en-US")
+   console.log(formattedNumber);
+   $('h4').text("Total Monthly: $" + formattedNumber)
+}
 //end deleteButton()
