@@ -32,7 +32,9 @@ function getTheInput(event){
         $('#title-input').val("")
         $('#annual-salary-input').val("")
 
-        $('#table-body').append(`<tr id="tableRow"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td >${annualSalaryInput}</td></tr>`)
+        let annualSalaryFormatted=parseInt(annualSalaryInput).toLocaleString("en-US")
+
+        $('#table-body').append(`<tr id="tableRow"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td >$${annualSalaryFormatted}</td></tr>`)
         
 
         totalMonthly+=parseInt(annualSalaryInput);
