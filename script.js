@@ -57,18 +57,26 @@ function getTheInput(event){
 //end getTheInput()
 
 function deleteButton() {
-   $('#table-row').remove();
+   $(this).remove();
    console.log("Annual Salary", $(this).find('#annual-salary-data').text())
    console.log("Annual Salary type:", typeof($(this).find('#annual-salary-data')));
    console.log("totalMonthly before:", totalMonthly);
    let annualSalaryUnformatted = $(this).find('#annual-salary-data').text().replace(/[$,]/g, "");
    console.log("annualSalaryUnformatted", annualSalaryUnformatted)
-   let annualSalaryFormatted = JSON.parse(annualSalaryUnformatted)
-   totalMonthly-=parseInt(annualSalaryFormatted)
+   let annualSalaryString= JSON.parse(annualSalaryUnformatted)
+   totalMonthly-=parseInt(annualSalaryString)
    console.log("totalMonthly after:", totalMonthly);
    console.log("totalMonthly type:", typeof(totalMonthly));
    let formattedNumber = totalMonthly.toLocaleString("en-US")
    console.log(formattedNumber);
    $('h4').text("Total Monthly: $" + formattedNumber)
+
+   if (totalMonthly > 20000) {
+    $('header').css({"background-color": "#722F37", "color": "white"})
+    $('footer').css({"background-color": "#722F37", "color": "white"})
+    } if (totalMonthly < 20000) {
+    $('header').css({"background-color": "#F5F5DC", "color": "black"})
+    $('footer').css({"background-color": "#F5F5DC", "color": "black"})
+    }
 }
 //end deleteButton()
