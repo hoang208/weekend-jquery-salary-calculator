@@ -38,10 +38,11 @@ function getTheInput(event){
         $('#table-body').append(`<tr id="table-row"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td id="annual-salary-data">$${annualSalaryFormatted}</td><td><button id="delete-button">Delete</button></td></tr>`)
         
 
-        totalMonthly+=parseInt(annualSalaryInput);
+        totalMonthly+=(parseInt(annualSalaryInput)/12);
         console.log("totalMonthly:", totalMonthly);
         console.log("totalMonthly type:", typeof(totalMonthly));
-        let formattedNumber = totalMonthly.toLocaleString("en-US")
+        let formattedNumber = totalMonthly.toFixed(2)
+        formattedNumber = formattedNumber.toLocaleString("en-US")
         $('h4').text("Total Monthly: $" + formattedNumber)
         if (totalMonthly > 20000) {
             $('header').css({"background-color": "#722F37", "color": "white"})
@@ -64,10 +65,11 @@ function deleteButton() {
    let annualSalaryUnformatted = $(this).find('#annual-salary-data').text().replace(/[$,]/g, "");
    console.log("annualSalaryUnformatted", annualSalaryUnformatted)
    let annualSalaryString= JSON.parse(annualSalaryUnformatted)
-   totalMonthly-=parseInt(annualSalaryString)
+   totalMonthly-=(parseInt(annualSalaryString)/12);
    console.log("totalMonthly after:", totalMonthly);
    console.log("totalMonthly type:", typeof(totalMonthly));
-   let formattedNumber = totalMonthly.toLocaleString("en-US")
+   let formattedNumber = totalMonthly.toFixed(2)
+   formattedNumber = formattedNumber.toLocaleString("en-US")
    console.log(formattedNumber);
    $('h4').text("Total Monthly: $" + formattedNumber)
 
