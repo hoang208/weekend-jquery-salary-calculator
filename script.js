@@ -41,8 +41,8 @@ function getTheInput(event){
         totalMonthly+=(parseInt(annualSalaryInput)/12);
         console.log("totalMonthly:", totalMonthly);
         console.log("totalMonthly type:", typeof(totalMonthly));
-        let formattedNumber = totalMonthly.toFixed(2)
-        formattedNumber = formattedNumber.toLocaleString("en-US")
+        let formattedNumber = parseInt(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        console.log("formattedNumber is", formattedNumber)
         $('h4').text("Total Monthly: $" + formattedNumber)
         if (totalMonthly > 20000) {
             $('header').css({"background-color": "#722F37", "color": "white"})
@@ -68,8 +68,7 @@ function deleteButton() {
    totalMonthly-=(parseInt(annualSalaryString)/12);
    console.log("totalMonthly after:", totalMonthly);
    console.log("totalMonthly type:", typeof(totalMonthly));
-   let formattedNumber = totalMonthly.toFixed(2)
-   formattedNumber = formattedNumber.toLocaleString("en-US")
+   let formattedNumber = parseInt(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
    console.log(formattedNumber);
    $('h4').text("Total Monthly: $" + formattedNumber)
 
