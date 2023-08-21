@@ -33,20 +33,20 @@ function getTheInput(event){
         $('#title-input').val("")
         $('#annual-salary-input').val("")
 
-        let annualSalaryFormatted=parseInt(annualSalaryInput).toLocaleString("en-US")
+        let annualSalaryFormatted=parseFloat(annualSalaryInput).toLocaleString("en-US")
 
         $('#table-body').append(`<tr id="table-row"><td>${firstNameInput}</td><td>${lastNameInput}</td><td >${idInput}</td><td >${titleInput}</td><td id="annual-salary-data">$${annualSalaryFormatted}</td><td><button id="delete-button">Delete</button></td></tr>`)
         
 
-        totalMonthly+=(parseInt(annualSalaryInput)/12);
+        totalMonthly+=(parseFloat(annualSalaryInput)/12);
         console.log("totalMonthly:", totalMonthly);
         console.log("totalMonthly type:", typeof(totalMonthly));
-        let formattedNumber = parseInt(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        let formattedNumber = parseFloat(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         console.log("formattedNumber is", formattedNumber)
         $('h4').text("Total Monthly: $" + formattedNumber)
         if (totalMonthly > 20000) {
             $('header').css({"background-color": "#722F37", "color": "white"})
-            $('footer').css({"background-color": "#722F37", "color": "white"})
+            // $('footer').css({"background-color": "#722F37", "color": "white"})
         }
     } else if (!isNaN(idInput) && !isNaN(annualSalaryInput)){
         alert("Please fill out ID and annual salary with only numbers.")
@@ -65,10 +65,10 @@ function deleteButton() {
    let annualSalaryUnformatted = $(this).find('#annual-salary-data').text().replace(/[$,]/g, "");
    console.log("annualSalaryUnformatted", annualSalaryUnformatted)
    let annualSalaryString= JSON.parse(annualSalaryUnformatted)
-   totalMonthly-=(parseInt(annualSalaryString)/12);
+   totalMonthly-=(parseFloat(annualSalaryString)/12);
    console.log("totalMonthly after:", totalMonthly);
    console.log("totalMonthly type:", typeof(totalMonthly));
-   let formattedNumber = parseInt(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+   let formattedNumber = parseFloat(totalMonthly).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
    console.log(formattedNumber);
    $('h4').text("Total Monthly: $" + formattedNumber)
 
