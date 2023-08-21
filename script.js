@@ -46,7 +46,10 @@ function getTheInput(event){
         $('h4').text("Total Monthly: $" + formattedNumber)
         if (totalMonthly > 20000) {
             $('header').css({"background-color": "#722F37", "color": "white"})
-            // $('footer').css({"background-color": "#722F37", "color": "white"})
+            $('footer').css({"background-color": "#722F37", "color": "white"})
+        } if (totalMonthly < 20000) {
+        $('header').css({"background-color": "#F5F5DC", "color": "black"})
+        $('footer').css({"background-color": "#F5F5DC", "color": "black"})
         }
     } else if (!isNaN(idInput) && !isNaN(annualSalaryInput)){
         alert("Please fill out ID and annual salary with only numbers.")
